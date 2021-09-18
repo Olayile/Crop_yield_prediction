@@ -27,7 +27,7 @@ with st.beta_expander("Models used"):
 # To start with, just loading and returning
 # We can show filtered details little later
 def load_province_data():
-    province_data = pd.read_csv("/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/data/Province_data.csv", delimiter=";")
+    province_data = pd.read_csv("data/Province_data.csv", delimiter=";")
     columns = province_data.columns
     print(columns)
     filtered_province_data = province_data[['Geo Point', 'Provincie name', 'Gemeente name']]
@@ -35,7 +35,7 @@ def load_province_data():
 
 @st.cache
 def load_weather_stations_data():
-    weather_stations_data = pd.read_csv("/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/data/weather_knmi_stations_2018.csv", delimiter=";")
+    weather_stations_data = pd.read_csv("data/weather_knmi_stations_2018.csv", delimiter=";")
     return weather_stations_data
 
 @st.cache
@@ -45,7 +45,7 @@ def load_weather_data():
 
 @st.cache
 def load_yield_data():
-    yield_data = pd.read_csv("/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/data/Yield_data_cbs.csv", delimiter=";")
+    yield_data = pd.read_csv("data/Yield_data_cbs.csv", delimiter=";")
     yield_data = yield_data[["FarmTypes","Periods","NumberOfFarmsTotal_1","PotatoesTotal_9", "VegetablesArable_13", "Cereals_14", "IndustrialCrops_16",
 "Pulses_17", "SugarBeets_18", "OtherArableCrops_19", "FruitInTheOpen_44", "MushroomsTotal_68"]]
     yield_data = yield_data.iloc[:500]
@@ -60,7 +60,7 @@ def load_weather_yield_data():
 
 @st.cache
 def load_2021_weather():
-    weather_2021 = pd.read_csv('/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/data/province_weather_2021 (1).csv', index_col=0)
+    weather_2021 = pd.read_csv('data/province_weather_2021 (1).csv', index_col=0)
     weather_2021.drop(['STN', 'year'], axis=1, inplace=True)
     return weather_2021
 
@@ -121,42 +121,42 @@ def predict_yield(crop_name, province):
     selected_province_weather.drop('Province', axis=1, inplace=True)
 
     if crop_name == "Potatoes":
-        potatoe_model =pickle.load(open('/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/models/potatoes.sav', 'rb'))
+        potatoe_model =pickle.load(open('models/potatoes.sav', 'rb'))
         predict = potatoe_model.predict(selected_province_weather)
         return predict
 
     elif crop_name == "Arable Vegetables":
-        arable_veg_model = pickle.load(open('/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/models/arable_vegetables.sav', 'rb'))
+        arable_veg_model = pickle.load(open('models/arable_vegetables.sav', 'rb'))
         predict = arable_veg_model.predict(selected_province_weather)
         return predict
 
     elif crop_name == "Cereals":
-        cereal_model = pickle.load(open('/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/models/cereal_model.sav', 'rb'))
+        cereal_model = pickle.load(open('models/cereal_model.sav', 'rb'))
         predict = cereal_model.predict(selected_province_weather)
         return predict
 
     elif crop_name == "Industrial Crops":
-        industrial_model= pickle.load(open('/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/models/industrial_crops_model.sav', 'rb'))
+        industrial_model= pickle.load(open('models/industrial_crops_model.sav', 'rb'))
         predict = industrial_model.predict(selected_province_weather)
         return predict
 
     elif crop_name == "Pulses":
-        pulses_model = pickle.load(open('/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/models/pulses_model.sav', 'rb'))
+        pulses_model = pickle.load(open('models/pulses_model.sav', 'rb'))
         predict = pulses_model.predict(selected_province_weather)
         return predict
 
     elif crop_name == "Sugar Beets":
-        sugar_model = pickle.load(open('/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/models/sugar_beets_model.sav', 'rb'))
+        sugar_model = pickle.load(open('models/sugar_beets_model.sav', 'rb'))
         predict = sugar_model.predict(selected_province_weather)
         return predict
 
     elif crop_name == "Other Arable Crops":
-        other_arable_model = pickle.load(open('/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/models/other_arable_crops_model.sav', 'rb'))
+        other_arable_model = pickle.load(open('models/other_arable_crops_model.sav', 'rb'))
         predict = other_arable_model.predict(selected_province_weather)
         return predict
 
     elif crop_name == "Fruits":
-        fruits_model = pickle.load(open('/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/models/fruits_model.sav', 'rb'))
+        fruits_model = pickle.load(open('models/fruits_model.sav', 'rb'))
         predict = fruits_model.predict(selected_province_weather)
         return predict 
  
