@@ -337,4 +337,4 @@ show_prediction_for = st.sidebar.selectbox(
 
 if st.sidebar.button("Click to see Prediction"):
     st.write("Take a look at the PREDICTED YIELD details of ", show_prediction_for)
-    st.write(predict_yield(show_prediction_for, chosen_2021)[0])
+    st.write(predict_yield(show_prediction_for, chosen_2021)[0], "million tons per hectare" )
