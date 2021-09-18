@@ -53,7 +53,7 @@ def load_yield_data():
 
 @st.cache
 def load_weather_yield_data():
-    weather_yield_data = pd.read_csv("/Users/olayile/omdena-netherlands-circular-economy/src/tasks/task-4-crop-yield-prediction/data/merged_weather_yield_(3).csv")
+    weather_yield_data = pd.read_csv("data/merged_weather_yield_(3).csv")
     
     weather_yield_data_farm1 = weather_yield_data[weather_yield_data['FarmTypes']=='A009481']
     return weather_yield_data_farm1
