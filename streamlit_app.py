@@ -14,14 +14,14 @@ st.set_page_config(
 	)
 
 st.title('Task 4 - Crop Yield Prediction')
-with st.beta_expander("Problem Statement"):
+with st.expander("Problem Statement"):
     st.write("""To predict the yield of a specific crops by 
         using data such as rainfall, temperature, soil composition, 
         PH-values etc. """)
-with st.beta_expander("Approach"):
-    st.write("""To be filled """)
-with st.beta_expander("Models used"):
-    st.write("""To be filled """)
+with st.expander("Approach"):
+    st.write(""" Multi Linear regression:  """)
+with st.expander("Models used"):
+    st.write("""sklearn Linear regression:  """)
 
 @st.cache
 # To start with, just loading and returning
