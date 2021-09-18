@@ -68,7 +68,7 @@ def load_2021_weather():
 def eda_year_yield_scatter(weather_yield_data, chosen_region, chosen_crop):
     # Line chart for crop-yield
 
-    actual_years = weather_yield_data.Year.unique()
+    # actual_years = weather_yield_data.Year.unique()
 
     # Default is Potato
     internal_crop_name = "PotatoesTotal_9"
